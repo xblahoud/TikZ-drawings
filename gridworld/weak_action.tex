@@ -1,0 +1,23 @@
+\documentclass[tikz]{standalone}
+
+
+\usepackage{tikz}
+\usetikzlibrary{gridworld}
+\begin{document}
+
+\begin{tikzpicture}
+\fill[background, use as bounding box] (-.3, .7) rectangle (3.3, 3.3);
+\draw[gridworld] (-.3,-.3) grid (3.3,3.3);
+
+
+\node[agent] at (1.5, 1.5) (agent) {};
+
+\path[->, action edge]
+(agent)
+  edge[out=90, in=200, side effect] +(1,1)
+  edge[out=90, in=-20, side effect] +(-1,1)
+  edge[main] +(0,1)
+;
+\node[main, action name] at (1.5, 2.8) {\textsf{weak north}};
+\end{tikzpicture}
+\end{document}
